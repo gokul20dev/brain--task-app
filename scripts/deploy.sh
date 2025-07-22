@@ -8,5 +8,5 @@ REGION="ap-south-1"
 aws eks update-kubeconfig --region $REGION --name $CLUSTER_NAME
 
 # Apply Kubernetes manifests
-kubectl apply -f /app/k8s/deployment.yaml
-kubectl apply -f /app/k8s/service.yaml
+kubectl apply -f kubernetes/deployment.yml
+kubectl apply -f kubernetes/service.yml
