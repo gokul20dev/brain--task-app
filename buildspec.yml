@@ -8,15 +8,15 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - docker build -f deployment.yml -t brain-tasks-app .
+      - docker build -f dockerfile.yml
       - docker tag brain-tasks-app:latest 513869214497.dkr.ecr.ap-south-1.amazonaws.com/brain-tasks-app:latest
   post_build:
     commands:
       - echo Build completed on `date`
       - docker push 513869214497.dkr.ecr.ap-south-1.amazonaws.com/brain-tasks-app:latest
       - echo Writing Kubernetes manifest...
-      - docker build -t brain-tasks-app .
-      - kubectl apply -f service.yml
+      - kubectl apply -f kubernetes/deployment.yml
+      - kubectl apply -f kubernetes/service.yml
 
 artifacts:
   files:
