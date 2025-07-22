@@ -1,9 +1,10 @@
 version: 0.0
-Resources:
-  - myEKSApp:
-      Type: AWS::EKS::Application
-      Properties:
-        Name: brain-tasks-app
-        ClusterName: brain-tasks-cluster
-        Namespace: default
-        File: deployment.yml
+os: linux
+files:
+  - source: /
+    destination: /app
+hooks:
+  AfterInstall:
+    - location: scripts/deploy.sh
+      timeout: 300
+      runas: root
