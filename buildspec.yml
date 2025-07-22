@@ -1,0 +1,25 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - aws ecr get-login-password | docker login --username AWS --password-stdin 513869214497.dkr.ecr.ap-south-1.amazonaws.com
+  build:
+    commands:
+      - echo Build started on `date`
+      - docker build -f deployment.yml -t brain-tasks-app .
+      - docker tag brain-tasks-app:latest 513869214497.dkr.ecr.ap-south-1.amazonaws.com/brain-tasks-app:latest
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - docker push 513869214497.dkr.ecr.ap-south-1.amazonaws.com/brain-tasks-app:latest
+      - echo Writing Kubernetes manifest...
+      - kubectl apply -f deployment.yml
+      - kubectl apply -f service.yml
+
+artifacts:
+  files:
+    - deployment.yml
+    - service.yml
+
