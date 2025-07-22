@@ -15,7 +15,7 @@ phases:
       - echo Build completed on `date`
       - docker push 513869214497.dkr.ecr.ap-south-1.amazonaws.com/brain-tasks-app:latest
       - echo Writing Kubernetes manifest...
-      - kubectl apply -f deployment.yml
+      - docker build -t brain-tasks-app .
       - kubectl apply -f service.yml
 
 artifacts:
