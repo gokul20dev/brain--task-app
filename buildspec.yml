@@ -20,6 +20,6 @@ phases:
 
 artifacts:
   files:
-    - deployment.yml
-    - service.yml
+    - kubernetes/deployment.yml
+    - kubernetes/service.yml
 
