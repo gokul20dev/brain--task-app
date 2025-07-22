@@ -5,20 +5,22 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - aws ecr get-login-password | docker login --username AWS --password-stdin 513869214497.dkr.ecr.ap-south-1.amazonaws.com
+
   build:
     commands:
       - echo Build started on `date`
       - docker build -f Dockerfile -t brain-tasks-app .
       - docker tag brain-tasks-app:latest 513869214497.dkr.ecr.ap-south-1.amazonaws.com/brain-tasks-app:latest
+
   post_build:
     commands:
       - echo Build completed on `date`
       - docker push 513869214497.dkr.ecr.ap-south-1.amazonaws.com/brain-tasks-app:latest
 
-       - echo Configuring kubectl for EKS
-    - aws eks update-kubeconfig --region ap-south-1 --name brain-tasks-cluster
-    
-      - echo Writing Kubernetes manifest...
+      - echo Configuring kubectl for EKS
+      - aws eks update-kubeconfig --region ap-south-1 --name brain-tasks-cluster
+      
+      - echo Applying Kubernetes manifests...
       - kubectl apply -f kubernetes/deployment.yml
       - kubectl apply -f kubernetes/service.yml
 
@@ -26,4 +28,3 @@ artifacts:
   files:
     - kubernetes/deployment.yml
     - kubernetes/service.yml
-
