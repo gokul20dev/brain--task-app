@@ -2,9 +2,15 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /tmp/brain-tasks-app
+    destination: /home/ec2-user/app
+
 hooks:
-  AfterInstall:
+  BeforeInstall:
+    - location: scripts/before_install.sh
+      timeout: 300
+      runas: ec2-user
+
+  ApplicationStart:
     - location: scripts/deploy.sh
       timeout: 300
-      runas: root
+      runas: ec2-user
