@@ -18,10 +18,4 @@ phases:
       - echo Build completed on `date`
       - docker push 513869214497.dkr.ecr.ap-south-1.amazonaws.com/brain-tasks-app:latest
 
-      - echo Configuring kubectl for EKS
-      - aws eks update-kubeconfig --region ap-south-1 --name brain-tasks-cluster
 
-artifacts:
-  files:
-    - kubernetes/deployment.yml
-    - kubernetes/service.yml
