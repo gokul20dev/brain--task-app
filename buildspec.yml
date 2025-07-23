@@ -20,10 +20,6 @@ phases:
 
       - echo Configuring kubectl for EKS
       - aws eks update-kubeconfig --region ap-south-1 --name brain-tasks-cluster
-      
-      - echo Applying Kubernetes manifests...
-      - kubectl apply -f kubernetes/deployment.yml
-      - kubectl apply -f kubernetes/service.yml
 
 artifacts:
   files:
