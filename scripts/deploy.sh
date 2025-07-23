@@ -5,7 +5,8 @@ CLUSTER_NAME="brain-tasks-cluster"
 REGION="ap-south-1"
 
 # Update kubeconfig to access EKS
-aws eks update-kubeconfig --region $REGION --name $CLUSTER_NAME
+echo Configuring kubectl for EKS
+aws eks update-kubeconfig --region $REGION --name $CLUSTER_NAME 
 
 # Apply Kubernetes manifests
 kubectl apply -f kubernetes/deployment.yml
