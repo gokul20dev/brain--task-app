@@ -22,11 +22,13 @@ phases:
       - mkdir -p BuildArtif
       - cp kubernetes/deployment.yml BuildArtif/
       - cp kubernetes/service.yml BuildArtif/
+      - echo Artifacts prepared
 
 artifacts:
   files:
-    - deployment.yml
-    - service.yml
+    - BuildArtif/deployment.yml
+    - BuildArtif/service.yml
+    - appspec.yml
   base-directory: BuildArtif
   name: qDOTTnu
   discard-paths: no
