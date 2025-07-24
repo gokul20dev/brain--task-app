@@ -1,5 +1,5 @@
 #!/bin/bash
 
 echo "🚀 Deploying app to EKS..."
-kubectl apply -f /tmp/deployment.yml
-kubectl apply -f /tmp/service.yml
+kubectl apply -f /kubernetes/deployment.yml
+kubectl apply -f /kubernetes/service.yml
