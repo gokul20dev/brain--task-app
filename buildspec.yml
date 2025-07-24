@@ -14,11 +14,15 @@ phases:
       - docker build -f Dockerfile -t brain-tasks-app .
       - docker tag brain-tasks-app:latest 513869214497.dkr.ecr.ap-south-1.amazonaws.com/brain-tasks-app:latest
 
- post_build:
-  commands:
-    - cp kubernetes/deployment.yml .
-    - cp kubernetes/service.yml .
-    - cp scripts/deploy.sh .
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - docker push 513869214497.dkr.ecr.ap-south-1.amazonaws.com/brain-tasks-app:latest
+      - echo Push completed
+      - cp kubernetes/deployment.yml .
+      - cp kubernetes/service.yml .
+      - cp scripts/deploy.sh .
+      - echo Artifacts prepared
 
 artifacts:
   files:
@@ -28,4 +32,3 @@ artifacts:
     - service.yml
   base-directory: .
   discard-paths: no
-
