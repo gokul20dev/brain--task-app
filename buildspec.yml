@@ -22,16 +22,15 @@ phases:
       - mkdir -p $CODEBUILD_SRC_DIR/BuildArtif
       - cp $CODEBUILD_SRC_DIR/kubernetes/deployment.yml $CODEBUILD_SRC_DIR/BuildArtif/ || { echo "deployment.yml not found"; exit 1; }
       - cp $CODEBUILD_SRC_DIR/kubernetes/service.yml $CODEBUILD_SRC_DIR/BuildArtif/ || { echo "service.yml not found"; exit 1; }
-      - cp $CODEBUILD_SRC_DIR/appspec.yml $CODEBUILD_SRC_DIR/BuildArtif/ || { echo "appspec.yml not found"; exit 1; }
       - cp $CODEBUILD_SRC_DIR/scripts/deploy.sh $CODEBUILD_SRC_DIR/BuildArtif/ || { echo "deploy.sh not found"; exit 1; }
       - echo Artifacts prepared
 
 artifacts:
   files:
-    - deployment.yml
-    - service.yml
     - appspec.yml
-    - deploy.sh
-  base-directory: BuildArtif
+    - BuildArtif/deployment.yml
+    - BuildArtif/service.yml
+    - BuildArtif/deploy.sh
+  base-directory: .
   name: qDOTTnu
   discard-paths: no
