@@ -10,6 +10,6 @@ files:
 
 hooks:
   BeforeInstall:
-    - location: deploy.sh
+    - location: /tmp/deploy.sh
       timeout: 300
       runas: ec2-user
