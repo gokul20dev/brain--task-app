@@ -9,4 +9,4 @@ files:
     destination: /tmp
 hooks:
   BeforeInstall:
-    - location: deploy.sh
+    - location: /tmp/deploy.sh
