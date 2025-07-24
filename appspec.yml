@@ -9,4 +9,4 @@ files:
     destination: /tmp
 hooks:
   BeforeInstall:
-    - location: /tmp/deploy.sh
+    - location: BuildArtif/deploy.sh
