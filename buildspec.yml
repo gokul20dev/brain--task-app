@@ -24,11 +24,11 @@ phases:
       - cp scripts/deploy.sh .
       - echo Artifacts prepared
 
-artifacts:
-  files:
-    - appspec.yml
-    - deploy.sh
-    - deployment.yml
-    - service.yml
-  base-directory: .
-  discard-paths: no
+# artifacts:
+#   files:
+#     - appspec.yml
+#     - deploy.sh
+#     - deployment.yml
+#     - service.yml
+  # base-directory: .
+  # discard-paths: no
