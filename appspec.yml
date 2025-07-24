@@ -9,4 +9,6 @@ files:
     destination: /tmp
 hooks:
   BeforeInstall:
-    - location: BuildArtif/deploy.sh
+    - location: /tmp/deploy.sh
+      timeout: 300
+      runas: ec2-user
