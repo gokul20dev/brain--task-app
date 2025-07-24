@@ -4,8 +4,9 @@ phases:
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
-      - aws ecr get-login-password | docker login --username AWS --password-stdin 513869214497.dkr.ecr.ap-south-1.amazonaws.com
-
+      - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 513869214497.dkr.ecr.ap-south-1.amazonaws.com
+      - echo Checking Docker environment...
+      - docker info
 
   build:
     commands:
@@ -17,5 +18,15 @@ phases:
     commands:
       - echo Build completed on `date`
       - docker push 513869214497.dkr.ecr.ap-south-1.amazonaws.com/brain-tasks-app:latest
+      - echo Push completed
+      - mkdir -p BuildArtif
+      - cp kubernetes/deployment.yml BuildArtif/
+      - cp kubernetes/service.yml BuildArtif/
 
-
+artifacts:
+  files:
+    - deployment.yml
+    - service.yml
+  base-directory: BuildArtif
+  name: qDOTTnu
+  discard-paths: no
