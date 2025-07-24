@@ -22,6 +22,7 @@ phases:
       - mkdir -p $CODEBUILD_SRC_DIR/BuildArtif
       - cp $CODEBUILD_SRC_DIR/kubernetes/deployment.yml $CODEBUILD_SRC_DIR/BuildArtif/ || { echo "deployment.yml not found"; exit 1; }
       - cp $CODEBUILD_SRC_DIR/kubernetes/service.yml $CODEBUILD_SRC_DIR/BuildArtif/ || { echo "service.yml not found"; exit 1; }
+      - cp $CODEBUILD_SRC_DIR/appspec.yml $CODEBUILD_SRC_DIR/BuildArtif/ || { echo "appspec.yml not found"; exit 1; }
       - echo Artifacts prepared
 
 artifacts:
