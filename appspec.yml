@@ -5,7 +5,7 @@ files:
     destination: /tmp
   - source: BuildArtif/service.yml
     destination: /tmp
-  - source: deploy.sh
+  - source: BuildArtif/deploy.sh
     destination: /tmp
 hooks:
   BeforeInstall:
