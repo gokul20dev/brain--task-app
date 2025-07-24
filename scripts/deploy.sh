@@ -2,7 +2,7 @@
 
 # Set variables
 #CLUSTER_NAME="brain-tasks-cluster"
-REGION="ap-south-1"
+#REGION="ap-south-1"
 
 # Update kubeconfig to access EKS
 echo Configuring kubectl for EKS
