@@ -1,12 +1,13 @@
 version: 0.0
 os: linux
 files:
-  - source: BuildArtif/deployment.yml
+  - source: deploy.sh
     destination: /tmp
-  - source: BuildArtif/service.yml
+  - source: deployment.yml
     destination: /tmp
-  - source: BuildArtif/deploy.sh
+  - source: service.yml
     destination: /tmp
+
 hooks:
   BeforeInstall:
     - location: /tmp/deploy.sh
