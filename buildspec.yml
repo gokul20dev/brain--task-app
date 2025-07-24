@@ -28,6 +28,7 @@ artifacts:
   files:
     - deployment.yml
     - service.yml
+    - appspe.yml
   base-directory: BuildArtif
   name: qDOTTnu
   discard-paths: no
