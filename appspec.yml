@@ -1,15 +1,15 @@
 version: 0.0
 os: linux
 files:
-  - source: scripts/deploy.sh
-    destination: /tmp
-  - source: kubernetes/deployment.yml
-    destination: /tmp
-  - source: kubernetes/service.yml
+  - source: /
     destination: /tmp
 
 hooks:
   BeforeInstall:
-    - location: /tmp/deploy.sh
+    - location: scripts/before_install.sh
+      timeout: 300
+      runas: ec2-user
+  ApplicationStart:
+    - location: scripts/deploy.sh
       timeout: 300
       runas: ec2-user
