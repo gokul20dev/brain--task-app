@@ -1,11 +1,11 @@
 version: 0.0
 os: linux
 files:
-  - source: deploy.sh
+  - source: scripts/deploy.sh
     destination: /tmp
-  - source: deployment.yml
+  - source: kubernetes/deployment.yml
     destination: /tmp
-  - source: service.yml
+  - source: kubernetes/service.yml
     destination: /tmp
 
 hooks:
