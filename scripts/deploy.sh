@@ -1,19 +1,7 @@
 #!/bin/bash
 
-# Set variables
-CLUSTER_NAME="gokul-cluster"
-REGION="ap-south-1"
-KUBECONFIG_PATH="/root/.kube/config"
-
-# Update kubeconfig to access EKS
-echo "🔧 Configuring kubectl for EKS..."
-aws eks update-kubeconfig --region "$REGION" --name "$CLUSTER_NAME" --kubeconfig "$KUBECONFIG_PATH" || {
-  echo "❌ Failed to update kubeconfig"
-  exit 1
-}
-
-# Export KUBECONFIG so kubectl uses the correct file
-export KUBECONFIG="$KUBECONFIG_PATH"
+# Set kubeconfig path to use ec2-user's existing config (default)
+export KUBECONFIG="/home/ec2-user/.kube/config"
 
 # Verify kubectl connectivity
 echo "🔍 Verifying kubectl connectivity..."
